@@ -1,0 +1,1 @@
+{"name":"Local: factorial","url":"e:\\improve_your_self\\factorial.c","tests":[{"id":1635150993124,"input":"4\naba\nbaba\naba\nxzxb\n3\naba\nxzxb\nab","output":""},{"id":1635151291767,"input":"3\ndef\nde\nfgh\n3\nde\nlmn\nfgh","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\improve_your_self\\factorial.c","group":"local","local":true}

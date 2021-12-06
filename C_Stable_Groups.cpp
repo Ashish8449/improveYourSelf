@@ -1,0 +1,71 @@
+/*
+*
+*************************************************************
+* AUTHOR : Ashish Gururani                                  *
+* Language: C++14                                           *
+* Purpose: -                                                *
+* IDE used: Visual Studio Code.                             *
+*************************************************************
+*
+Comments will be included in practice problems if it helps ^^
+*/
+#include <bits/stdc++.h>
+typedef long             long ll;
+typedef long             double ld;
+#define rep(i,n,k)       for(ll i=0;i<n;i+=k)
+#define rrep(i,n,k)      for(ll i=n;i>=0;i-=k)
+#define rep1(i,n,k)      for(ll i=1;i<n;i+=k)
+#define vi               vector<int>
+#define vl               vector<ll>
+#define vs               vector<string>
+#define vvi              vector<vi>
+#define fast             ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define pb               push_back
+#define mp               make_pair
+#define fi                first
+#define se                second
+#define tc(t)            long long t;cin>>t;while(t--)
+#define all(x)           (x).begin(), (x).end()
+#define dbg(x)           cout<<x<<" = "<<x<<endl
+#define inf 1e6+5
+using namespace std;
+
+int main()
+{
+    #ifndef ONLINE_JUDGE
+freopen("input.txt", "r", stdin);
+freopen("error.txt", "w", stderr);
+freopen("output.txt", "w", stdout);
+#endif
+fast;
+ll n,k,x;
+cin>>n>>k>>x;
+vl v(n),ans;
+for (ll i = 0; i < n; i++)
+{
+    cin>>v[i];
+}
+sort(all(v));
+
+for (ll i = 0; i < n-1; i++)
+{
+    if(v[i+1]-v[i]>x)ans.pb(v[i+1]-v[i]);
+}
+sort(all(ans));
+ll c=0;
+for (ll i = 0; i < ans.size(); i++)
+{
+    // cout<<ans[i]<<" ";
+    ll val=ceil(ld(ans[i]-x)/ld(x));
+    // dbg(val);
+    k-=val;
+    if(k>=0)c++;
+    else break;
+    
+}
+cout<<ans.size()+1-c<<endl;
+
+
+     
+return 0;
+}
