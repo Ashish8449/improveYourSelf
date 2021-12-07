@@ -145,7 +145,7 @@ int main()
 
         ll steps = 0;
         ll left = 1, right = 1;
-        // vl leftvec, rightvec;
+
         for (ll i = 0; i < n; i++)
         {
             if (i % 2)
