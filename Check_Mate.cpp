@@ -65,11 +65,7 @@ vvl adj;
 vl vis;
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
+
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
@@ -77,7 +73,9 @@ int main()
     tc(t)
     {
 
-        //  think about this problem:🏆
+        //  think about this problem:👷‍♀️
+
+        
     }
     return 0;
 }
