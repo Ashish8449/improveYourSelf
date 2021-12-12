@@ -65,24 +65,62 @@ vvl adj;
 vl vis;
 int main()
 {
-
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
+#endif
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     tc(t)
     {
+        cin >> n;
+        vl v(n);
+        vector<pair<ll, ll>> vp(n);
+        for (ll i = 0; i < n; i++)
+        {
+            cin >> v[i];
+            vp[i].first = v[i];
+            vp[i].second = i;
+        }
 
-      ll xk , yk , x1, y1, x2, y2;
-      cin>>xk>>yk>>x1>>y1>>x2>>y2;
+        sort(all(vp));
+        ll ans = inf;
+        for (ll i = 0; i < n;)
+        {
+            ll stindx = i++;
 
-      if(xk==1||xk==8||yk==1||yk==8){
-    
-      }else{
-          cout<<"NO"<<endl;
-      }
-
-        
+            while ((i) < n && vp[stindx].first == vp[i].first)
+            {
+                // dbg(vp[i].second);
+                // dbg(vp[stindx].second);
+                if (vp[stindx].second == 0 && vp[i].second == n - 1)
+                    ans = min(ans, 0LL);
+                else if (vp[stindx].second == 0 && vp[i].second != n - 1)
+                {
+                    ans = min(ans, 2LL);
+                }
+                else if (vp[stindx].second != 0 && vp[i].second == n - 1)
+                    ans = min(ans, 2LL);
+                else
+                {
+                    ans = min(ans, 3LL);
+                }
+                i++;
+            }
+        }
+        if (n == 1)
+        {
+            cout << 0 << endl;
+        }
+        else if (ans == inf)
+        {
+            cout << -1 << endl;
+        }
+        else
+            cout << ans << endl;
     }
     return 0;
 }

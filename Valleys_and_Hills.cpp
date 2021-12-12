@@ -65,24 +65,55 @@ vvl adj;
 vl vis;
 int main()
 {
-
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
+#endif
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     tc(t)
     {
-
-      ll xk , yk , x1, y1, x2, y2;
-      cin>>xk>>yk>>x1>>y1>>x2>>y2;
-
-      if(xk==1||xk==8||yk==1||yk==8){
-    
-      }else{
-          cout<<"NO"<<endl;
-      }
-
-        
+        cin >> n >> m;
+        a = min(n, m);
+        char firstchar, secChar;
+        if (n < m)
+        {
+            firstchar = '1';
+            secChar = '0';
+        }
+        else
+        {
+            secChar = '1';
+            firstchar = '0';
+        }
+        string ans = "";
+        for (ll i = 0; i <= a; i++)
+        {
+            ans += firstchar;
+            ans += secChar;
+            // dbg(ans);
+        }
+        bool flg = 0;
+        while (a < max(n, m))
+        {
+            if (!flg)
+            {
+                ans += firstchar;
+                flg = 1;
+            }
+            else
+            {
+                ans += firstchar;
+                ans += secChar;
+                ans += firstchar;
+            }
+            a++;
+        }
+        cout << ans.length() << endl;
+        cout << ans << endl;
     }
     return 0;
 }
