@@ -70,3 +70,18 @@ string s,r;
 
 //tc(t)
 {
+     char A, B;
+     char arr[3]={'R', 'B', 'G'};
+     map<char,int>map;
+     map['R']=0;map['B']=1, map['G']=2;
+     cin>>A>>B;
+     if(map[A]<map[B]){
+         cout<<A;
+     }
+     else{
+         cout<<B;
+     }
+
+}
+return 0;
+}
