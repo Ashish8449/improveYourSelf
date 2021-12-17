@@ -87,17 +87,18 @@ int main()
             map[v[i]]++;
         }
         ll num = map.size();
-      ll ans=1;
+        ll ans = 1;
         for (auto i : map)
         {
-           if(i.second==1)
-           ans*=2;
-           else
-           ans*=i.second;
-        //    cout<<ans<<endl;
-            
+
+            ans *= (i.second + 1);
+            ans %= mod;
+
+            //    cout<<ans<<endl;
         }
-        if(num>1)ans--;
+        
+            ans--;
+
         cout << ans << endl;
     }
     return 0;
