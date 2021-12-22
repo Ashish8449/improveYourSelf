@@ -97,7 +97,7 @@ int main()
             //    cout<<ans<<endl;
         }
         
-            ans--;
+            ans--;i
 
         cout << ans << endl;
     }
