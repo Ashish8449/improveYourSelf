@@ -84,20 +84,11 @@ int main()
         }
         else
         {
-            bool flg = 0;
-            while (i < n / 2 && j < s.length())
-            {
-                if (s[i] != s[j])
-                {
-                    flg = 1;
-                    break;
-                }
-                i++, j++;
-            }
-            if (flg)
-                cout << "NO";
-            else
+
+            if (s.substr(0, s.length() / 2) == s.substr(s.length() / 2))
                 cout << "YES";
+            else
+                cout << "NO";
         }
         cout << endl;
     }
