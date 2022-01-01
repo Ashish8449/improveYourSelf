@@ -65,7 +65,7 @@ ll fun(vl v, int n)
 {
     if (v.size() == n)
     {
-        print_array(v);
+        // print_array(v);
         // check()
         ll i = 0;
         ll count = 0;
