@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -74,15 +74,14 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
-        {
-            dbg(i);
-            dbg(j);
-            dbg(k);
-        }
+        cin >> n >> s;
+        ll c0 = 0, c1 = 0;
+        if (s == "1" || s == "01" || s == "10" || s == "0")
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
     }
     return 0;
 }

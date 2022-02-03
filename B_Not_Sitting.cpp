@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -60,9 +60,27 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
-
+ll a, b, c, d, e, f, m, n, p, q;
 vvl adj;
 vl vis;
+ll disfun(int i, int j, int c1, int c2)
+{
+    return abs(i - c1) + abs(j - c2);
+}
+ll maxDis(int i, int j)
+{
+    ll maxdis = 0;
+   
+    
+       
+            maxdis = max(maxdis, disfun(i, j, 1, m));
+            maxdis = max(maxdis, disfun(i, j, 1, 1));
+            maxdis = max(maxdis, disfun(i, j, n, 1));
+            maxdis = max(maxdis, disfun(i, j, n, m));
+        
+    
+    return maxdis;
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -71,18 +89,24 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
     fast;
-    ll a, b, c, d, e, f, m, n, p, q;
+
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        cin >> n >> m;
+        vl v;
+        for (int i = 1; i <= n; i++)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            for (int j = 1; j <= m; j++)
+            {   
+                // if(i!=n&&!j!=m)
+                v.pb(maxDis(i, j));
+                // dbg(maxDis(i, j));
+            }
         }
+        sort(all(v));
+        print_array(v);
     }
     return 0;
 }

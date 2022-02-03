@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -74,14 +74,23 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        cin >> n;
+        vl v(n);
+        input_array(v);
+        sort(all(v));
+        map<int, vl> map;
+        ll sum = accumulate(all(v), 0)- v[n-1];
+    ll need_sum= sum % v[n-1];
+        cout<<"sum = "<<sum<<endl;
+        
+        dbg(map.size());
+        cout << map.size() << endl;
+        for (auto &&i : map)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            cout << i.second.size() << " " << i.first << endl;
+            print_array(i.second);
         }
     }
     return 0;

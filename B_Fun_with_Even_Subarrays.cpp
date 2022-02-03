@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -74,15 +74,34 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        cin >> n;
+        vl v(n);
+        input_array(v);
+        int allE = v[n - 1];
+        ll k = 1;
+        ll ans = 0;
+        while ( n >  k)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            // dbg(k);
+            int j=k;
+            
+            while (v[n - k-1] == allE && k<n)
+            {
+        
+                k++;
+            }
+            // dbg(k);
+            if(k<n)ans++;
+            
+            k*=2;
+         
+            
+            
+          
         }
+        cout << ans << endl;
     }
     return 0;
 }

@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -60,6 +60,26 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
+bool check(vl &v, ll k, ll indx)
+{
+    ll sum = 0;
+    ll temp_ans = 0;
+    // dbg(indx);
+    for (int i = indx-1; i >= 0; i--)
+    {
+        //    dbg(i);
+
+        temp_ans += (10+ (v[i])-( sum) % 10) % 10;
+        sum +=(10+ (v[i])-( sum) % 10) % 10 ;
+    // dbg(temp_ans);
+    // dbg(sum);
+    }
+     if (temp_ans <= k)
+    {
+        return true;
+    }
+    return false;
+}
 
 vvl adj;
 vl vis;
@@ -74,15 +94,35 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        ll k;
+        vl v;
+        cin >> n >> k >> s;
+        for (int i = 0; i < n; i++)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            if (s[i] == '0')
+                v.pb(0);
+            else
+                v.pb(10 - (s[i] - '0'));
         }
+        ll start = 0, end = n+1;
+        ll ans = 0;
+        while (start + 1 < end)
+        {
+            ll mid = (start + end) / 2;
+            if (check(v, k, mid))
+            {
+                ans = mid;
+                start = mid;
+                //  dbg(ans);
+            }
+            else
+            {
+                end = mid;
+            }
+        }
+        cout << start << endl;
     }
     return 0;
 }

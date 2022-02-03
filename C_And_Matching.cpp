@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -74,14 +74,58 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        ll k;
+        cin >> n >> k;
+        if (k == n - 1)
+            cout << -1 << endl;
+        else
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            vl v;
+            if (k == 0)
+            {
+                v.pb(0);
+                v.pb(n - 1);
+                for (int i = 1; i < n / 2; i++)
+                {
+                    v.pb(i);
+                    v.push_back(n - 1 - i);
+                }
+            }
+            else
+            {
+                // v.push_back(k);
+                // v.push_back(n - 1);
+                for (int i = 1; i < n / 2; i++)
+                {
+                    if (i == k)
+                    {
+                         v.push_back(k);
+                         v.pb(n-1);
+                        v.pb(0);
+                        v.pb(n - 1 - i);
+                    }
+                    else if (n - 1 - i == k)
+                    {
+                        v.pb(0);
+                        v.pb(i);
+                        v.pb(n - 1 );
+                        v.pb(k);
+                    }
+                    else
+                    {
+                        v.pb(i);
+                        v.pb(n - 1 - i);
+                    }
+                    // print_array(v);
+                }
+            }
+            for (int i = 0; i < v.size(); i++)
+            {
+                cout<<v[i++]<<" "<<v[i]<<endl;
+            }
+            
         }
     }
     return 0;

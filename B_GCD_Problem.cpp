@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -60,6 +60,9 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
+ll gcd(ll a,ll b)       {if(b==0)return a; return gcd(b, a % b);}
+ll lcm(ll a,ll b)       {return (a*b)/gcd(a,b);}
+
 
 vvl adj;
 vl vis;
@@ -74,15 +77,20 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
-        {
-            dbg(i);
-            dbg(j);
-            dbg(k);
-        }
+        cin >> n;
+      for (int i = 2; i < 100; i++)
+      {
+          a=n-i-1;
+          b=i;
+          if(a+b+gcd(a,b)==n){
+              cout<<a<<" "<<b<<" "<<gcd(a,b)<<endl;
+              break;
+
+          }
+      }
+      
     }
     return 0;
 }

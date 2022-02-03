@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -74,15 +74,61 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        cin >> n >> m;
+        vl v(n), u(m);
+        input_array(v);
+        input_array(u);
+        vl forward(n + m), back(n + m);
+        int i = 0, j = 0;
+        int k = 0;
+        while (i < n && j < m)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            if (v[i] < u[j])
+            {
+
+                forward[k++] = v[i++];
+            }
+            else
+            {
+                forward[k++] = u[j++];
+            }
         }
+
+        while (i < n)
+        {
+            forward[k++] = v[i++];
+        }
+        while (j < m)
+        {
+            forward[k++] = u[j++];
+        }
+
+        i = n - 1, k = n + m - 1, j = m - 1;
+
+        while (i >= 0 && j >= 0)
+        {
+            if (v[i] > u[j])
+            {
+
+                back[k--] = v[i--];
+            }
+            else
+            {
+                back[k--] = u[j--];
+            }
+        }
+        while (i >= 0)
+        {
+            back[k--] = v[i--];
+        }
+        while (j >= 0)
+        {
+            back[k--] = u[j--];
+        }
+        print_array(back);
+        print_array(forward);
     }
     return 0;
 }

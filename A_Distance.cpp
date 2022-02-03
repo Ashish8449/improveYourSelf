@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -60,6 +60,10 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
+ll dis(ll xa, ll ya, ll xb, ll yb)
+{
+    return abs(xa - xb) + abs(ya - yb);
+}
 
 vvl adj;
 vl vis;
@@ -74,14 +78,34 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        ll xb, yb;
+        ll xa = 0, ya = 0;
+        cin >> xb >> yb;
+        ld disAb = ld(dis(xa, ya, xb, yb)) / ld(2);
+        // dbg(disAb);
+        bool flg = 0;
+        for (int i = 0; i < 100; i++)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            for (int j = 0; j < 100; j++)
+            {
+                ll xc = i, yc = j;
+
+                if (dis(xa, ya, xc, yc) == dis(xb, yb, xc, yc) && disAb == (ld(dis(xa, ya, xc, yc)) ))
+                {
+                    // dbg(dis(xa, ya, xc, yc));
+                    cout << xc << " " << yc << endl;
+                    flg = 1;
+                    break;
+                }
+            }
+            if (flg)
+                break;
+        }
+        if (flg == 0)
+        {
+            cout << -1 << " " << -1 << endl;
         }
     }
     return 0;

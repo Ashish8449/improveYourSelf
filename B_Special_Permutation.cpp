@@ -30,7 +30,7 @@ typedef long double ld;
 #define mp make_pair
 #define fi first
 #define se second
-#define nline "\n"
+#define endl "\n"
 #define tc(t)    \
     long long t; \
     cin >> t;    \
@@ -49,7 +49,7 @@ void print_array(const T &arr, char c = ' ')
     {
         cout << x << c;
     }
-    cout << endl;
+    // cout << endl;
 }
 
 template <typename T>
@@ -74,15 +74,54 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
+    tc(t)
     {
-        int i = 10, j = 0, k = 14;
-        if (i == 10 && j || k++)
+        cin >> n >> a >> b;
+        vl v;
+        int i;
+        map<int, int> map;
+        for (i = 1; v.size() < (n / 2) -1&&i<b; i++)
         {
-            dbg(i);
-            dbg(j);
-            dbg(k);
+            if (i != a)
+                v.pb(i), map[i]++;
+          
+             
+           
         }
+          v.pb(b);
+               map[b]=1;
+        int j;
+        vl left;
+        for (j = a; left.size() < n / 2; j++)
+        {
+            if (!map[j])
+            {
+                left.pb(j);
+                map[j]++;
+            }
+        }
+        // print_array(v);
+        // cout<<endl;
+        // print_array(left);
+        ll count = 0;
+        for (int i = 0; i < n; i++)
+        {
+            count += map[i + 1];
+        }
+        // dbg(count);
+        // dbg(i);
+        // dbg(j);
+        if (count != n )
+        {
+            cout << -1 << endl;
+        }
+        else{
+            print_array(left);
+            print_array(v);
+        cout << endl;
+
+        }
+
     }
     return 0;
 }
