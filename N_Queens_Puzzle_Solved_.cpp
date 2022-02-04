@@ -76,24 +76,8 @@ int main()
 
     tc(t)
     {
-        ll k;
-        cin >> n >> k >> s;
-        ll count = 0;
-        int i = 0, j = n - 1;
-        while (i <= j)
-            count += (s[i++] != s[j--]);
-
-        if (k < count)
-            cout << "NO" << endl;
-        else
-        {
-            ll dif = k - count;
-       
-            if (dif % 2 == 0 || n % 2)
-                cout << "YES" << endl;
-            else
-                cout << "NO" << endl;
-        }
+        cin >> n;
+        cout << llround(pow(0.143, n) * pow(n, n)) << endl;
     }
     return 0;
 }
