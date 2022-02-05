@@ -1,5 +1,45 @@
-
-1 
-1
-2 3 4 
+rc = W
+mpi[r-1] = 1
+mpi[c-1] = 1
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
 2
+rc = B
+mpi[r-1] = 2
+mpi[c-1] = 2
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
+2
+rc = W
+mpi[r-1] = 0
+mpi[c-1] = 0
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
+3
+rc = W
+mpi[r-1] = 0
+mpi[c-1] = 0
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
+3
+rc = W
+mpi[r-1] = 0
+mpi[c-1] = 0
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
+3
+rc = B
+mpi[r-1] = 2
+mpi[c-1] = 2
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 0
+2
+rc = W
+mpi[r-1] = 0
+mpi[c-1] = 0
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 1
+1
+rc = W
+mpi[r-1] = 1
+mpi[c-1] = 1
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 1
+1
+rc = W
+mpi[r-1] = 1
+mpi[c-1] = 1
+(rc!='B'&&(mpi[r-1]==m-1||mpi[c-1]==n-1)) = 1
+1
