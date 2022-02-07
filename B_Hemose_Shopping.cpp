@@ -68,14 +68,50 @@ fast;
 ll a, b,c,d,e,f,m,n,p,q;
 string s,r;
 
-// tc(t)
-{
- 
- a=16;
- int i =0; 
- while(a>=(1<<i))i++;
- cout<<i<<endl;
+tc(t)
+{ ll x;
+    cin>>n>>x;
+     vector<pair<ll,ll>>v(n);
+     for (int i = 0; i < n; i++)
+     {
+         cin>>a;
+          v[i]= mp(a, i);
+     }
+     sort(all(v));
+     bool flg=1;
+     for (int i = 0; i < n; i++)
+     {
+         cout<<i<<" "<<v[i].first<<" "<<v[i].second<<endl;
+     }
+     
+     for (int i = 0; i < n; i++)
+     {
+         if(v[i].second==i){
 
+         }
+         else if(v[i].second>i){
+
+            if(i>(v[i].second-x)&&i<(v[i].second- (v[i].second-x))){
+                dbg(i);
+                flg =0;
+                break;
+            }
+             
+            
+         }  else if(v[i].second<i){
+              
+             if(i<i+x&&i>n- (n- (x+1))){
+                 flg=0;
+                 break;
+             }
+
+         }
+     }
+     if(flg)cout<<"YES";
+     else cout<<"NO";
+     cout<<endl;
+     
+     
      
 }
 return 0;
