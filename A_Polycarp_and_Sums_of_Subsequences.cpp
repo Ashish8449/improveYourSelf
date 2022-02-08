@@ -55,6 +55,7 @@ cin>>arr[i];
 }
 }
 
+
 vvl adj;
 vl vis;
 int main()
@@ -69,31 +70,24 @@ ll a, b,c,d,e,f,m,n,p,q;
 string s,r;
 
 tc(t)
-{ ll x;
-    cin>>n>>x;
-     vector<pair<ll,ll>>v(n);
-     for (int i = 0; i < n; i++)
-     {
-         cin>>a;
-          v[i]= mp(a, i);
-     }
-     sort(all(v));
-     bool flg=1;
-     for (int i =n-x+1; i < x; i++)
-     {
-         if(i!=v[i].second)flg=0;
-         
-     }
-     
-     
+{
+    vl v(7);
+    input_array(v);
+    n= v.size();
+    a=0;
+    for (int i =1 ; i <= 3; i++)
+    {
+       a+= v[n-1]- v[n-1-i];
+    //    dbg(a);
+       if(i==3&& a== 2*(v[n-1]- v[n-1-i])){
+           cout<<v[n-1]- v[n-2-i]<<" ";
+       }
+       else {
+           cout<<v[n-1]- v[n-1-i]<<" ";
+       }
+    }
+    cout<<endl;
 
-     
-    
-     if(flg||n>=2*x)cout<<"YES";
-     else cout<<"NO";
-     cout<<endl;
-     
-     
      
 }
 return 0;
