@@ -1,9 +1,5 @@
-4
-7
-ab bb ba aa ba
-7
-ab ba aa ab ba
-3
-aa
+1
+
+
 5
-bb ab bb
+6 5 1 4 10 
