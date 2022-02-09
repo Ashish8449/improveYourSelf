@@ -1,2 +1,2 @@
 
-      cout<<count10<<endl;
+         ll dif= i- start+1;
