@@ -76,37 +76,18 @@ int main()
 
     tc(t)
     {
-        ll k;
-        cin >> n >> k;
-        int i;
-        ll count = 1, dif;
-        for (i = 1; i <= n; i++)
+        vl v(3);
+        input_array(v);
+        sort(all(v));
+        ll ans = 0;
+        for (int i = 0; i < 3; i++)
         {
-            if ((i * (i + 1)) / 2 <= (k - n) + 1)
-            {
-            }
-            else
-            {
-                break;
-            }
+            ans += (v[i] - v[0]);
         }
-        dbg(i);
-        dif= k-n - ((i)*(i-1))/2;
-        cout<<k-n<<endl;
-        dbg(dif);
-
-        for (int i = 1; i < n + 1; i++)
-        {
-            if (i <= count)
-            {
-                cout << i << " ";
-            }
-            else
-            {
-                cout << count - dif << " ";
-            }
-        }
-        cout << endl;
+        if (ans % 3)
+            cout << 1 << endl;
+        else
+            cout << 0 << endl;
     }
     return 0;
 }

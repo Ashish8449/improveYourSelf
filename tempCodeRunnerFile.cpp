@@ -1,2 +1,2 @@
 
-         ll dif= i- start+1;
+                break;

@@ -16,7 +16,7 @@ typedef long double ld;
 #define rrep(i, n, k) for (ll i = n; i >= 0; i -= k)
 #define rep1(i, n, k) for (ll i = 1; i < n; i += k)
 #define vi vector<int>
-#define vl vector<ll>
+#define vl vector<int>
 #define vs vector<string>
 #define vvi vector<vi>
 #define vvl vector<vl>
@@ -47,7 +47,7 @@ void print_array(const T &arr, char c = ' ')
 {
     for (auto x : arr)
     {
-        cout << x << c;
+        cout << x + 1 << c;
     }
     cout << endl;
 }
@@ -76,37 +76,65 @@ int main()
 
     tc(t)
     {
-        ll k;
-        cin >> n >> k;
-        int i;
-        ll count = 1, dif;
-        for (i = 1; i <= n; i++)
+        cin >> n;
+        cin >> s;
+        r = s;
+        sort(all(r));
+        vvl v;
+        while (s != r)
         {
-            if ((i * (i + 1)) / 2 <= (k - n) + 1)
-            {
-            }
-            else
-            {
-                break;
-            }
-        }
-        dbg(i);
-        dif= k-n - ((i)*(i-1))/2;
-        cout<<k-n<<endl;
-        dbg(dif);
 
-        for (int i = 1; i < n + 1; i++)
-        {
-            if (i <= count)
+            vl ans1;
+            bool flg = 0;
+            int i;
+            for (i = n - 1; i >= 0; i--)
             {
-                cout << i << " ";
+                if (flg & s[i] == '1')
+                {
+                    break;
+                }
+                if (s[i] == '0')
+                    flg = 1;
+                ans1.pb(i);
             }
-            else
+            flg = 0;
+            ll count = i;
+
+            vi ansfist;
+
+            for (int i = 0; i <= count; i++)
             {
-                cout << count - dif << " ";
+                if (s[i] == '1')
+                    ansfist.pb(i);
+                if (ans1.size() <= ansfist.size())
+                    break;
             }
+            i = 0;
+            vl ans;
+            for (int i = 0; i < min(ans1.size(), ansfist.size()); i++)
+            {
+                ans.pb(ansfist[i]);
+            }
+            for (int i = 0; i < min(ans1.size(), ansfist.size()); i++)
+            {
+                ans.pb(ans1[i]);
+            }
+
+            int j = ans.size() - 1;
+            while (i < j)
+                swap(s[ans[i++]], s[ans[j--]]);
+            // print_array(ans);
+            v.pb(ans);
         }
-        cout << endl;
+        //  cout<<s<<endl;
+        cout << v.size() << endl;
+        for (int i = 0; i < v.size(); i++)
+
+        {
+            cout << v[i].size() << " ";
+            
+            print_array(v[i]);
+        }
     }
     return 0;
 }
