@@ -10,86 +10,102 @@
 Comments will be included in practice problems if it helps ^^
 */
 #include <bits/stdc++.h>
-typedef long             long ll;
-typedef long             double ld;
-#define rep(i,n,k)       for(ll i=0;i<n;i+=k)
-#define rrep(i,n,k)      for(ll i=n;i>=0;i-=k)
-#define rep1(i,n,k)      for(ll i=1;i<n;i+=k)
-#define vi               vector<int>
-#define vl               vector<ll>
-#define vs               vector<string>
-#define vvi              vector<vi>
-#define vvl              vector<vl>
-#define vvs              vector<vs>
-#define mem(a,b)         memset(a,b,sizeof(a))
-#define fast             ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define pb               emplace_back
-#define mp               make_pair
-#define fi               first
-#define se               second
-#define endl          "\n"
-#define tc(t)            long long t;cin>>t;while(t--)
-#define all(x)           (x).begin(), (x).end()
+typedef long long ll;
+typedef long double ld;
+#define rep(i, n, k) for (ll i = 0; i < n; i += k)
+#define rrep(i, n, k) for (ll i = n; i >= 0; i -= k)
+#define rep1(i, n, k) for (ll i = 1; i < n; i += k)
+#define vi vector<int>
+#define vl vector<ll>
+#define vs vector<string>
+#define vvi vector<vi>
+#define vvl vector<vl>
+#define vvs vector<vs>
+#define mem(a, b) memset(a, b, sizeof(a))
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+#define pb emplace_back
+#define mp make_pair
+#define fi first
+#define se second
+#define endl "\n"
+#define tc(t)    \
+    long long t; \
+    cin >> t;    \
+    while (t--)
+#define all(x) (x).begin(), (x).end()
 
-#define dbg(x)           cout<<#x<<" = "<<x<<endl
-#define inf                 1e6+5
-#define mod              ll(1e9+7)
+#define dbg(x) cout << #x << " = " << x << endl
+#define inf 1e6 + 5
+#define mod ll(1e9 + 7)
 using namespace std;
 
-template<typename T>
+template <typename T>
 void print_array(const T &arr, char c = ' ')
 {
-for (auto x : arr)
-{
-cout << x << c;
-}
-cout << endl;
+    for (auto x : arr)
+    {
+        cout << x << c;
+    }
+    cout << endl;
 }
 
-template<typename T>
-void input_array(vector< T> &arr)
+template <typename T>
+void input_array(vector<T> &arr)
 {
-for (ll i = 0; i < arr.size(); i++)
-{
-cin>>arr[i];
+    for (ll i = 0; i < arr.size(); i++)
+    {
+        cin >> arr[i];
+    }
 }
-}
-    ll pb , ps, pc;
-ll a, b,c,d,e,f,m,n,p,q;
-string s;
-     ld r;
-     ll ss;
+
 vvl adj;
 vl vis;
+unordered_map<char, int> store;
+ll a, b, c, d, e, f, m, n, p, q;
+ll kb, kc, ks;
+ll r, ns, nb, nc;
+string s;
+bool makeBurger(ll size)
+{
+    ll buyb = max((store['B'] * size - kb), 0LL) * nb;
+    ll buyc = max((store['C'] * size - kc), 0LL) * nc;
+    ll buys = max((store['S'] * size - ks), 0LL) * ns;
+    // dbg(buys+buyb+buyc);
+    return (buys + buyb + buyc <= r);
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("error.txt", "w", stderr);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
 #endif
-fast;
+    fast;
 
-//tc(t)
-{
-     
-     cin>>s;
-     map<char , int>mpp;
-     cin>>b>>ss>>c;
- 
-     cin>>pb>>ps>>pc;
-     cin>>r;
-
-     for (ll i = 0; i < s.length(); i++)
-     {
-         mpp[s[i]]++;
-     }
-     ll ans=0; 
-     ans+= min(mpp['B']/b, min(mpp['S']/ss, mpp['C']/c));
-     b-=ans*mpp['B'];
-     b-=ans*mpp['B'];
-     b-=ans*mpp['B'];
-     
-}
-return 0;
+    // tc(t)
+    {
+        cin >> s;
+        cin >> kb >> ks >> kc;
+        cin >> nb >> ns >> nc;
+        cin >> r;
+        for (int i = 0; i < s.length(); i++)
+        {
+            store[s[i]]++;
+        }
+        ll start = 0, end = 1e14;
+        while (start + 1 < end)
+        {
+            ll mid = (start + end) / 2;
+            //  dbg(mid);
+            if (makeBurger(mid))
+                start = mid;
+            else
+                end = mid;
+        }
+        cout << start << endl;
+    }
+    return 0;
 }

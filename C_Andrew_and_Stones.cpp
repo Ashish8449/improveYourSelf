@@ -63,6 +63,38 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
+ll fun1(vl v, ll n)
+{
+    ll ans = 0;
+    ll c;
+    // dbg("yes");
+    ll minus = 0;
+
+    ll odd = 0, even = 0;
+    for (int i = 1; i < n - 1; i++)
+    {
+
+        if (v[i] & 1)
+            odd++;
+        else
+            even++;
+    }
+    ll d = 0;
+    for (int i = 1; i < n - 1; i++)
+    {
+        ans += (v[i] + 1) / 2;
+        d += (v[i] == 1);
+    }
+    if (odd == 1 && v[1] & 1 && (!even))
+        return -1;
+
+    if ((odd || even) && d != n - 2)
+        return ans;
+    if (v[1] % 2 == 0)
+        return ans;
+
+    return -1;
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -76,54 +108,11 @@ int main()
 
     tc(t)
     {
+
         cin >> n;
         vl v(n);
         input_array(v);
-        ll ans = 0;
-        ll minus = 0;
-        for (int i = 1; i < n - 1; i++)
-        {
-            if (v[i])
-            {
-                c = i;
-                break;
-            }
-        }
-        dbg(c);
-        // if (minus)
-        // {
-        //     cout << -1 << endl;
-        //     continue;
-        // }
-        ll odd = 0, even = 0;
-        for (int i = c + 1; i < n - 1; i++)
-        {
-            if (v[i] > 1)
-            {
-                if (v[i] & 1)
-                    odd++;
-                else
-                    even++;
-            }
-        }
-        for (int i = c; i < n - 1; i++)
-        {
-            ans += (v[i] + 1) / 2;
-        }
-        if (v[c] % 2 == 0)
-            cout << ans << endl;
-        else
-        {
-
-            if (odd)
-                cout << ans - 1 << endl;
-            else if (even)
-                cout << ans << endl;
-            else
-            {
-                cout << -1 << endl;
-            }
-        }
+        cout << fun1(v, n) << endl;
     }
     return 0;
 }
