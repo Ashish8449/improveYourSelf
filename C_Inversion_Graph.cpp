@@ -171,14 +171,26 @@ int main()
        
         adj = vvl(n + 1);
         vis = vl(n + 1, 0);
+        map<int,int>map;
         for (int i = 0; i < n; i++)
         {
-            for (int j = 1 + 1; j < n; j++)
+            map[v[i]]++;
+            for (int j = 1; j < v[i]; j++)
             {
-                adj[v[i]].pb(v[j]);
-                adj[v[j]].pb(v[i]);
+                if(!map[j]){
+
+                adj[v[i]].pb(j);
+                adj[j].pb(v[i]);
+                }
             }
         }
+        // for (int i = 0; i < n+1; i++)
+        // {
+        //     cout<<i<<" ";
+        //     print_array(adj[i]);
+        // }
+        // cout<<"end"<<endl;
+        
         vl cc;
         for (ll i = 1; i < n + 1; i++)
         {
