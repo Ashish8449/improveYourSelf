@@ -63,8 +63,6 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
-
-ll n, k;
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -76,28 +74,19 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
+    // tc(t)
     {
+        ll k;
         cin >> n >> k;
-        vl A(n), B(n);
-        input_array(A);
-        input_array(B);
-        ll start = 0, end = 1e10;
-        while (start + 1 < end)
-        {
-            ll mid = (start + end) / 2;
+        vl v(n);
+        input_array(v);
+        ll i = 0;
+        while ((i * (i + 1)) / 2 < k)
+            i++;
+        ll ans;
+        //    dbg(i);
 
-            ll needPower = 0;
-
-            for (int i = 0; i < n; i++)
-            {
-                needPower += max(0LL, -B[i] + (mid * A[i]));
-            }
-            if (needPower > k)
-                end = mid;
-            else
-                start = mid;
-        }
-        cout << start << endl;
+        cout << v[(k - (i * (i - 1)) / 2) - 1] << endl;
     }
     return 0;
 }

@@ -91,6 +91,7 @@ int main()
             for (int i = 0; i < n; i++)
             {
                 needPower += max(0LL, -B[i] + (mid * A[i]));
+                if(needPower>k)break;
             }
             if (needPower > k)
                 end = mid;

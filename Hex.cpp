@@ -63,8 +63,6 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
-
-ll n, k;
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -72,32 +70,68 @@ int main()
     freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
 #endif
+
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
+    int testcase = 0;
+    cin >> testcase;
+    for (int t = 1; t <= testcase; t++)
     {
-        cin >> n >> k;
-        vl A(n), B(n);
-        input_array(A);
-        input_array(B);
-        ll start = 0, end = 1e10;
-        while (start + 1 < end)
+        cin >> n;
+        vector<string> v(n);
+        input_array(v);
+        ll countB = 0, countR = 0;
+        int flgB = 0, flgR = 0;
+        bool flg = 0;
+        for (int i = 0; i < n; i++)
         {
-            ll mid = (start + end) / 2;
+            ll cb = 0, cr = 0;
+            ll rb = 0, rr = 0;
 
-            ll needPower = 0;
-
-            for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
             {
-                needPower += max(0LL, -B[i] + (mid * A[i]));
+                countB += (v[i][j] == 'B');
+                countR += (v[i][j] == 'R');
+                cb += (v[i][j] == 'B');
+                cr += (v[i][j] == 'R');
+                rb += (v[j][i] == 'B');
+                rr += (v[j][i] == 'R');
+                
             }
-            if (needPower > k)
-                end = mid;
-            else
-                start = mid;
+            // cout<<v[i]<<endl;
+            // cout<<cb<<" "<<cr<<" "<<rb<<" "<<rr<<endl;
+            if (cb == n)
+                flgB += 1;
+            if (rr == n)
+                flgR += 1;
+      
         }
-        cout << start << endl;
+        if ((flgB + flgR > 1) || abs(countB - countR) > 1)
+        {
+
+            cout << "Case #" << t << ": "
+                 << "Impossible";
+        }
+        else if (flgB)
+        {
+            // b wins
+            cout << "Case #" << t << ": "
+                 << "Blue wins";
+        }
+        else if (flgR)
+        {
+            // R wins
+            cout << "Case #" << t << ": "
+                 << "Red wins";
+        }
+        else
+        {
+            cout << "Case #" << t << ": "
+                 << "Nobody wins";
+        }
+        cout << endl;
     }
     return 0;
 }

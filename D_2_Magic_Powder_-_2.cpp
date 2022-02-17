@@ -81,6 +81,17 @@ int main()
         vl A(n), B(n);
         input_array(A);
         input_array(B);
+        // ll mm= INT64_MAX;
+        // for (int i = 0; i < n; i++)
+        // {
+        //     mm= min(mm,A[i]/B[i]);
+        // }
+        // dbg(mm);
+        // for (int i = 0; i < n; i++)
+        // {
+        //     B[i]-= mm*A[i];
+        // }
+
         ll start = 0, end = 1e10;
         while (start + 1 < end)
         {
@@ -91,6 +102,8 @@ int main()
             for (int i = 0; i < n; i++)
             {
                 needPower += max(0LL, -B[i] + (mid * A[i]));
+                if (needPower > k)
+                    break;
             }
             if (needPower > k)
                 end = mid;
