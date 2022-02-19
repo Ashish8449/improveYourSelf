@@ -78,9 +78,7 @@ int main()
     {
         ll k;
         cin >> n >> k;
-        if( n==1)cout<<0<<endl;
-        else if(n<=k)cout<<1<<endl;
-        else if( (k*(k+1))/2 -k+1<n)cout<<-1<<endl;
+        if( (k*(k+1))/2 -k+1<n)cout<<-1<<endl;
         else {
             ll start =0, end =k;
             while(start+1<end){

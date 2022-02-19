@@ -65,61 +65,30 @@ vvl adj;
 vl vis;
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
+
     fast;
-    ll a, b, c, d, e, f, m, n, p, q;
-    string s, r;
+
 
     tc(t)
     {
-        ll k;
-        cin >> n >> k;
-        vl v(n);
-        ll i;
-       
-
-        for (i = 0; i <= n; i++)
+        cin >> m >> n;
+        for (int i = m; i <= n; i++)
         {
-            if ((i * (i + 1)) / 2 < (k - n))
+            if (i == 1)
+                continue;
+            bool flg = 0;
+            for (int j = 2; j * j <= i; j++)
             {
+                if (i % j == 0)
+                {
+                    flg = 1;
+                    break;
+                }
             }
-            else
-            {
-
-                break;
-            }
+            if (!flg)
+                cout << i << "\n";
         }
-        if ((i * (i + 1)) / 2 > (k - n))
-            i--;
-        // dbg(i);
-
-        ll pos = n - i - 1;
-
-        ll dif = (k - n - (i * (i + 1)) / 2);
-
-        pos += dif;
-        c = 1;
-        for (int j = 0; j < n; j++)
-        {
-
-            if (j < n - i - 1)
-            {
-              
-                v[j] = n;
-            }
-            else if (pos == j)
-            {
-                v[j] = n;
-            }
-
-            else
-                v[j] = c++;
-        }
-        print_array(v);
+        cout << endl;
     }
     return 0;
 }

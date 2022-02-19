@@ -71,55 +71,16 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
     fast;
-    ll a, b, c, d, e, f, m, n, p, q;
+    ld a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     tc(t)
     {
-        ll k;
-        cin >> n >> k;
-        vl v(n);
-        ll i;
-       
-
-        for (i = 0; i <= n; i++)
-        {
-            if ((i * (i + 1)) / 2 < (k - n))
-            {
-            }
-            else
-            {
-
-                break;
-            }
-        }
-        if ((i * (i + 1)) / 2 > (k - n))
-            i--;
-        // dbg(i);
-
-        ll pos = n - i - 1;
-
-        ll dif = (k - n - (i * (i + 1)) / 2);
-
-        pos += dif;
-        c = 1;
-        for (int j = 0; j < n; j++)
-        {
-
-            if (j < n - i - 1)
-            {
-              
-                v[j] = n;
-            }
-            else if (pos == j)
-            {
-                v[j] = n;
-            }
-
-            else
-                v[j] = c++;
-        }
-        print_array(v);
+        ld x;
+        cin >> n >> x;
+        if(n<=2)cout<<1<<endl;
+        else 
+        cout << ceil((n - 2) / x)+1 << endl;
     }
     return 0;
 }
