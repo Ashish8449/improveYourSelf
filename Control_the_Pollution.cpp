@@ -22,7 +22,10 @@ typedef long double ld;
 #define vvl vector<vl>
 #define vvs vector<vs>
 #define mem(a, b) memset(a, b, sizeof(a))
-
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 #define pb emplace_back
 #define mp make_pair
 #define fi first
@@ -39,32 +42,48 @@ typedef long double ld;
 #define mod ll(1e9 + 7)
 using namespace std;
 
+template <typename T>
+void print_array(const T &arr, char c = ' ')
+{
+    for (auto x : arr)
+    {
+        cout << x << c;
+    }
+    cout << endl;
+}
+
+template <typename T>
+void input_array(vector<T> &arr)
+{
+    for (ll i = 0; i < arr.size(); i++)
+    {
+        cin >> arr[i];
+    }
+}
+
 vvl adj;
 vl vis;
 int main()
 {
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
+#endif
+    fast;
+    ll a, b, c, d, e, f, m, n, p, q;
+    string s, r;
 
     tc(t)
     {
-        ll m, n;
-        cin >> m >> n;
-        for (int i = m; i <= n; i++)
-        {
-            if (i == 1)
-                continue;
-            bool flg = 0;
-            for (int j = 2; j * j <= i; j++)
-            {
-                if (i % j == 0)
-                {
-                    flg = 1;
-                    break;
-                }
-            }
-            if (!flg)
-                cout << i << "\n";
-        }
-        cout << endl;
+
+        ll x, y;
+        cin >> n >> x >> y;
+        ll ans = ceil(ld(n) / 4) * y;
+        ans = min(ans, ll(ceil(ld(n) / 100)) * x);
+
+        ll tem = (n / 100) * x + ceil(ld(n % 100) / 4) * y;
+        cout << min(ans, tem) << endl;
     }
     return 0;
 }
