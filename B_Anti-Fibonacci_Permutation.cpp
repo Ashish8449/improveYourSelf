@@ -60,13 +60,6 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
-ll gcd(ll a, ll b)
-{
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-}
-ll lcm(ll a, ll b) { return (a * b) / gcd(a, b); }
 
 vvl adj;
 vl vis;
@@ -83,25 +76,35 @@ int main()
 
     tc(t)
     {
-        ll h;
-        cin >> n >> h;
-        vl v(n);
-        input_array(v);
-        ll start = 0, end = 1e18;
-        while (start + 1 < end)
+        cin >> n;
+
+        vl v;
+        for (int i = 0; i < n; i++)
         {
-            ll mid = (start + end) / 2;
-            ll damage = mid;
-            for (int i = 0; i < n - 1; i++)
-            {
-                damage += min(mid, v[i + 1] - v[i]);
-            }
-            if (damage >= h)
-                end = mid;
-            else
-                start = mid;
+            v.pb(i + 1);
         }
-        cout << end << endl;
+        reverse(all(v));
+        c = 0;
+        do
+        {
+            bool check = 0;
+            for (int i = 2; i < n; i++)
+            {
+                if (v[i - 1] + v[i - 2] == v[i])
+                {
+                    check = 1;
+                    break;
+                }
+            }
+            if (!check)
+            {
+                print_array(v);
+                c++;
+            }
+            if (c == n)
+                break;
+
+        } while (prev_permutation(all(v)));
     }
     return 0;
 }

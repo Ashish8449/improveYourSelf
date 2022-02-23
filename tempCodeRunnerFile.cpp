@@ -1,2 +1,2 @@
 
-        if(v[i]%(i+1)){
+            if (last - start <= i)
