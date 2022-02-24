@@ -1,2 +1,2 @@
 
-                for (auto &&i : mlt)
+        ll end = s.length()-1;
