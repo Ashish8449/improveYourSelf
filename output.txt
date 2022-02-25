@@ -1,3 +1,8 @@
-ksmdas
-solve1(s) = 5
-ans = 4
+YES
+3 2 1
+YES
+100 100 1
+NO
+NO
+YES
+1000000000 1 1
