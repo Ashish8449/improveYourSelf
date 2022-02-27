@@ -43,7 +43,7 @@ for (auto x : arr)
 {
 cout << x << c;
 }
-cout << endl;
+// cout << endl;
 }
 
 template<typename T>
@@ -70,11 +70,29 @@ string s,r;
 
 tc(t)
 {
-     cin>>a>>b;
-     if(a>=3*b)cout<<b<<endl;
-     else if(b>=3*a)cout<<a<<endl;
-     else {
-         cout<<(a+b)/4<<endl;
+     cin>>n;
+     vl v(n);
+     input_array(v);
+     if(v[0]==n||v[n-1]==n){
+         vl right, left;
+        int start =0, end =n-1;
+        while(start<=end){
+
+         if(v[start]<=v[end]){
+             right.pb(v[start]);
+             start++;
+         }else{
+             left.pb(v[end]);
+             end--;
+         }
+        }
+        reverse(all(right));
+        print_array(right);
+        print_array(left);
+        cout<<endl;
+         
+     }else{
+         cout<<-1<< endl;
      }
 }
 return 0;
