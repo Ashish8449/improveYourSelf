@@ -1,2 +1,2 @@
 
-        vector<pair<ll, ll>> ans;
+            map[a]++;
