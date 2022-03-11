@@ -76,31 +76,47 @@ int main()
 
     tc(t)
     {
-
-        cin >> n;
-        vl v(n + 1);
-        for (int i = 1; i < n + 1; i++)
+        cin >> n >> m;
+        vs v(n);
+        input_array(v);
+        bool flg = 1;
+        for (int i = 0; i < n; i++)
         {
-            cin >> a;
-            v[a] = i;
-        }
-        vl ans(n + 1);
-        // print_array(v);
-        for (int i = n; i >= 1; i--)
-        {
-            ans[i] = v[i] % i;
-            for (int j = 1; j <= i; j++)
+            for (int j = 1; j < m; j++)
             {
-                v[j] = ((v[j] - ans[i] + i) % i);
+                if (i < n - 1 && v[i][j] == '1' && v[i][j + 1] == '1' && v[i][j - 1] == '1' && v[i + 1][j] == '1')
+                {
+                    flg = 0;
+                }
+                if (i > 0 && v[i][j] == '1' && v[i][j + 1] == '1' && v[i][j - 1] == '1' && v[i - 1][j] == '1')
+                {
+                    flg = 0;
+                }
             }
-            // print_array(v);
         }
-              for (int i = 0; i < n; i++)
-              {
-                  cout<<ans[i+1]<<" ";
-              }
-              cout<<endl;
-      
+        for (int i = 1; i < n - 1; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (j <= m - 1 && v[i][j] == '1' && v[i - 1][j] == '1' && v[i + 1][j] == '1' && v[i][j + 1] == '1')
+                {
+                    flg = 0;
+                }
+                if (j > 0 && v[i][j] == '1' && v[i - 1][j] == '1' && v[i + 1][j] == '1' && v[i][j - 1] == '1')
+                {
+                    flg = 0;
+                }
+            }
+        }
+
+        if (flg)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
     return 0;
 }
