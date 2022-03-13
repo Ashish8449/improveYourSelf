@@ -38,7 +38,7 @@ typedef long double ld;
 #define all(x) (x).begin(), (x).end()
 
 #define dbg(x) cout << #x << " = " << x << endl
-#define inf 1e6 + 5
+#define inf 1e8 + 5
 #define mod ll(1e9 + 7)
 using namespace std;
 
@@ -74,66 +74,27 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    tc(t)
+    // tc(t)
     {
-        cin >> n;
-        vl va(n), vb(n);
-        input_array(va);
-        input_array(vb);
-        ll indxa = -1, indxb = -1;
-        ll ans = 0, temp = INT64_MAX;
-        for (int i = 0; i < n; i++)
+        vl seive(1e8 + 5, 1);
+
+        seive[1] = 0, seive[0] = 0;
+        for (ll i = 2; i * i <= inf; i++)
         {
-            if (temp > abs(va[0] - vb[i]))
-            {
-                indxa = i;
-                temp = abs(va[0] - vb[i]);
-            }
-        }
-        ans += temp;
-        temp = INT64_MAX;
-        for (int i = n - 1; i >= 0; i--)
-        {
-            if (temp > abs(va[n - 1] - vb[i]))
-            {
-                indxb = i;
-                temp = abs(va[n - 1] - vb[i]);
-            }
-        }
-        ans += temp;
-        ll add = 0;
-      ll indxb0, indxbn;
-        if (min(indxb, indxa) != 0)
-        {
-            temp = INT64_MAX;
-            for (int i = 0; i < n; i++)
-            {
-                if (temp > abs(va[i] - vb[0]))
+            if (seive[i] == 1)
+                for (ll j = i * i; j < inf; j += i)
                 {
-                    indxb0=i;
-                    
-                    temp = abs(va[i] - vb[0]);
+                    seive[j] = 0;
                 }
-            }
-            add = temp;
         }
-        ll addn = 0;
-        if (max(indxb, indxa) != n - 1)
+        c =0;
+        for (int i = 0; i < inf; i++)
         {
-            temp = INT64_MAX;
-            for (int i = n - 1; i >= 0; i--)
-            {
-                if (temp > abs(vb[n - 1] - va[i]))
-                {
-                    indxbn=
-                    temp = abs(vb[n - 1] - va[i]);
-                }
-            }
-            addn = temp;
+            c+=seive[i];
+            if(seive[i]&& c%100==1)cout<<i<<endl;
         }
-       
-       if( indxb0== n-1 || indxb0== n-2)
-        cout << ans + +add + addn << endl;
+        dbg(c);
+        
     }
     return 0;
 }
