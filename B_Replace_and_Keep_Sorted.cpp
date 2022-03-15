@@ -68,10 +68,18 @@ fast;
 ll a, b,c,d,e,f,m,n,p,q;
 string s,r;
 
-tc(t)
+// tc(t)
 {
     ll k;
-    cin>>n>>q>>k;
+      cin>>n>>q>>k;
+
+     vl v(n);
+     input_array(v);
+     for (int i = 0; i < q; i++)
+     {
+         cin>>a>>b;
+         cout<<k+ (v[b-1]- v[a-1]+1) - 2*(b-a+1)<< endl;
+     }
      
 }
 return 0;
