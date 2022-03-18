@@ -79,7 +79,7 @@ int main()
         cin >> n;
         vl v(n);
         input_array(v);
-        vvl adj;
+        vl adj;
         vl inc;
         ll i = 0;
         bool flg = 1;
@@ -98,33 +98,28 @@ int main()
 
             else if (inc.back() >= v[i])
             {
-                adj.pb(inc);
+                adj.pb(inc.size());
                 inc.clear();
-
-               
             }
 
             if (i == n)
             {
 
-                adj.pb(inc);
+                adj.pb(inc.size());
                 inc.clear();
             }
         }
-// for (int i = 0; i < adj.size(); i++)
-// {
-    
-//     print_array(adj[i]);
-// }
+        // print_array(adj);
 
-       
+        sort(all(adj));
+        reverse(all(adj));
+        ll ans = adj[0];
+        // dbg(ans);
 
-        ll ans = adj[0].size();
-
-        for (int i = 0; i < adj.size() - 1; i++)
+        if (adj.size() > 1)
         {
-            ll len = adj[i].size() + adj[i + 1].size();
-            ans = max(ans, len);
+            // cout<<'y'<<endl;
+            ans += adj[1];
         }
         cout << ans << endl;
     }
