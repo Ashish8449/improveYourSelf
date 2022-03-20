@@ -74,39 +74,32 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    tc(t)
+    int testcase = 0;
+    cin>> testcase;
+    for (int t = 1; t <=testcase; t++)
+     
     {
-        cin >> n;
-        vl odd, even;
-        for (int i = 0; i < n; i++)
+        cin >> s >> r;
+        ll j = 0,i;
+        bool flg=0;
+        c=0;
+        for ( i = 0; i < s.length(); i++)
         {
-            cin >> a;
-            if (a & 1)
-                odd.pb(a);
-            else
-                even.pb(a);
+            while (j < r.length() && s[i] != r[j])
+            {
+                j++;
+                c++;
+            }
+            j++;
+          
+            
         }
-        //   print_array(odd);
-        //   print_array(even);
-        //   ll oddNum= odd.size();
-        //   ll evenNum= even.size();
-        vl ans(all(odd));
-        for (int i = 0; i < even.size(); i++)
-        {
-            ans.pb(even[i]);
-        }
-        ll sum = 0;
-        for (int i = 1; i < n; i++)
-        {
-            sum += (ans[i] * ans[i - 1]);
-        }
-        if (sum & 1)
-        {
-            print_array(ans);
-        }
-        else
-        {
-            cout << -1 << endl;
+        if(i==s.length()&&j<=r.length()){
+            cout<<"Case #"<<t<<": ";
+            cout<<c+ r.length()-j<<endl;
+        }else{
+            cout<<"Case #"<<t<<": ";
+            cout<<"IMPOSSIBLE"<< endl;
         }
     }
     return 0;

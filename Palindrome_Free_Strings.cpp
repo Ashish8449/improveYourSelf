@@ -63,6 +63,63 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
+bool palindrome(string s)
+{
+    ll i = 0, j = s.length() - 1;
+    while (i < j)
+    {
+        if (s[i] != s[j] || s[i] != '?' || s[j] != '?')
+        {
+            return false;
+        }
+        i++;
+        j++;
+    }
+    return 1;
+}
+bool check(string s){
+    bool flg = 0;
+    ll n =s .length();
+    for (int i = 0; i < n; i++)
+        {
+            for (int j = i; j < n; j++)
+            {
+                string ans = "";
+                for (int k = i; k <= j; k++)
+                {
+
+                    ans += s[k];
+                }
+                if (ans.length() >= 5)
+                {
+                cout <<ans<<endl;
+                    if (palindrome(ans))
+                    {
+                        cout<<ans<<endl;
+                        flg = 1;
+                    }
+                }
+            }
+        }
+        if (flg)
+        {
+            cout << "Case #" << t << ": "
+                 << "IMPOSSIBLE" << endl;
+        }
+        else
+        {
+            cout << "Case #" << t << ": "
+                 << "POSSIBLE" << endl;
+        }
+
+}
+bool makeString(string s, string ans="", int i=0)
+{
+    if(i==s.length()){
+
+    }
+
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -74,39 +131,45 @@ int main()
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    tc(t)
+    int testcase = 0;
+    cin >> testcase;
+    for (int t = 1; t <= testcase; t++)
+
     {
         cin >> n;
-        vl odd, even;
+        cin >> s;
+        // cout<<palindrome(s)<<endl;
+        bool flg = 0;
         for (int i = 0; i < n; i++)
         {
-            cin >> a;
-            if (a & 1)
-                odd.pb(a);
-            else
-                even.pb(a);
+            for (int j = i; j < n; j++)
+            {
+                string ans = "";
+                for (int k = i; k <= j; k++)
+                {
+
+                    ans += s[k];
+                }
+                if (ans.length() >= 5)
+                {
+                cout <<ans<<endl;
+                    if (palindrome(ans))
+                    {
+                        cout<<ans<<endl;
+                        flg = 1;
+                    }
+                }
+            }
         }
-        //   print_array(odd);
-        //   print_array(even);
-        //   ll oddNum= odd.size();
-        //   ll evenNum= even.size();
-        vl ans(all(odd));
-        for (int i = 0; i < even.size(); i++)
+        if (flg)
         {
-            ans.pb(even[i]);
-        }
-        ll sum = 0;
-        for (int i = 1; i < n; i++)
-        {
-            sum += (ans[i] * ans[i - 1]);
-        }
-        if (sum & 1)
-        {
-            print_array(ans);
+            cout << "Case #" << t << ": "
+                 << "IMPOSSIBLE" << endl;
         }
         else
         {
-            cout << -1 << endl;
+            cout << "Case #" << t << ": "
+                 << "POSSIBLE" << endl;
         }
     }
     return 0;
