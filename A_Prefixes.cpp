@@ -68,29 +68,28 @@ fast;
 ll a, b,c,d,e,f,m,n,p,q;
 string s,r;
 
-tc(t)
+//tc(t)
 {
-    cin>>n;
-    vl v(n);
-    input_array(v);
-    ll dif =0, last=v[0];
-    for (int i = 1; i < n; i++)
+    cin>>n>>s;
+    ll ans =0;
+    for (int i = 0; i < n; i+=2)
     {
-        if(v[i]<last){
-            dif = max(last -v[i], dif);
-
-            v[i]= last;
+        string check="";
+       check+=s[i];
+       check+=s[i+1];
+    //    dbg(check);
+        if(check=="ab"|| check=="ba"){
+            continue;
         }
-        last = max(last, v[i]);
+        else{
+            if(s[i]=='a')
+            s[i+1]='b';
+            else s[i+1]='a';
+            ans++;
+        }
     }
-    // print_array(v);
-    // dbg(dif);
-    
-    
-    if(dif==0)cout<<0<<endl;
-    else{
-        cout<<floor(log2(dif))+1<<endl;
-    }
+    cout<<ans<<endl;
+    cout<<s << endl;
     
      
 }
