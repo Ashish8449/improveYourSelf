@@ -1,13 +1,10 @@
-12
-atrtthfpcvishmqbakprquvnejr 185
-atrtthfpcvishmqbakprquvnejr -699
-atrtthfpcvishmqbakprquvnejr -911
-atrtthfpcvishmqbakprquvnejr -220
-fcgslzkicjrpbqaifgweyzreajjfdo 132
-fcgslzkicjrpbqaifgweyzreajjfdo -242
-m 177
-m -549
-atrtthfpcvishmqbakprquvnejr -242
-m 38
-atrtthfpcvishmqbakprquvnejr -761
-fcgslzkicjrpbqaifgweyzreajjfdo 879
+3
+300000 200000 300000 500000
+300000 200000 500000 300000
+300000 500000 300000 200000
+1000000 1000000 0 0
+0 1000000 1000000 1000000
+999999 999999 999999 999999
+768763 148041 178147 984173
+699508 515362 534729 714381
+949704 625054 946212 951187
