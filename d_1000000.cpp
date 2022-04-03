@@ -65,63 +65,33 @@ vvl adj;
 vl vis;
 int main()
 {
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("error.txt", "w", stderr);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("error.txt", "w", stderr);
+//     freopen("output.txt", "w", stdout);
+// #endif
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    // tc(t)
     int testcase = 0;
     cin >> testcase;
     for (int t = 1; t <= testcase; t++)
 
     {
-        cin >> n >> m;
-        s = "";
-        r = "";
-        cout << "Case #" << t << ":" << endl;
-        for (int i = 0; i < 2 * m + 1; i++)
-        {
-            if (i & 1)
-            {
-                s += "-";
-                r += ".";
-            }
-            else
-            {
-                s += "+";
-                r += "|";
-            }
-        }
-        // cout<<s<<endl;
-        // cout<<r<<endl;
+        cin >> n;
+        vl v(n);
+        input_array(v);
+        sort(all(v));
+        // print_array(v);
+        ll ans = 1;
         for (int i = 0; i < n; i++)
         {
-            if (i == 0)
-            {
-                r[1] = '.';
-                s[1] = '.';
-                r[0] = '.';
-                s[0] = '.';
-
-                cout << s << endl;
-                cout << r << endl;
-
-                s[1] = '-';
-                r[0] = '|';
-                s[0] = '+';
-            }
-            else
-            {
-                cout << s << endl;
-                cout << r << endl;
-            }
+            if (ans <= v[i])
+                ans++;
         }
-        cout << s << endl;
+        cout<<"Case #"<<t<<": ";
+        cout << ans - 1 << endl;
     }
     return 0;
 }
