@@ -1,6 +1,3 @@
-5
-pwd
-cd /xgztbykka
-pwd
-cd /gia/kxfls
-pwd
+1
+1
+1
