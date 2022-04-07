@@ -10,8 +10,6 @@
 Comments will be included in practice problems if it helps ^^
 */
 #include <bits/stdc++.h>
-// #include <boost/multiprecision/cpp_int.hpp>
-// using boost::multiprecision::cpp_int;
 typedef long             long ll;
 typedef long             double ld;
 #define rep(i,n,k)       for(ll i=0;i<n;i+=k)
@@ -21,27 +19,44 @@ typedef long             double ld;
 #define vl               vector<ll>
 #define vs               vector<string>
 #define vvi              vector<vi>
+#define vvl              vector<vl>
+#define vvs              vector<vs>
+#define mem(a,b)         memset(a,b,sizeof(a))
 #define fast             ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define pb               push_back
+#define pb               emplace_back
 #define mp               make_pair
-#define fi                first
-#define se                second
+#define fi               first
+#define se               second
+#define endl          "\n"
 #define tc(t)            long long t;cin>>t;while(t--)
 #define all(x)           (x).begin(), (x).end()
-#define dbg(x)           cout<<x<<" = "<<x<<endl
-#define inf 1e6+5
+
+#define dbg(x)           cout<<#x<<" = "<<x<<endl
+#define inf                 1e6+5
+#define mod              ll(1e9+7)
 using namespace std;
-bool fun(ll x, ll a,ll b ,ll n){
-    if(x>n)return false ;
-    if(x==n)return true;
-    cout<<x<<endl;
-    if(x==x*a) return fun(x+b,a,b,n);
-    
-    else
-    
-    return fun(x*a, a, b, n)||fun(x+b,a,b,n);
+
+template<typename T>
+void print_array(const T &arr, char c = ' ')
+{
+for (auto x : arr)
+{
+cout << x << c;
+}
+cout << endl;
 }
 
+template<typename T>
+void input_array(vector< T> &arr)
+{
+for (ll i = 0; i < arr.size(); i++)
+{
+cin>>arr[i];
+}
+}
+
+vvl adj;
+vl vis;
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -50,32 +65,27 @@ freopen("error.txt", "w", stderr);
 freopen("output.txt", "w", stdout);
 #endif
 fast;
-tc(t){
-    ll n,a,b;
-    cin>>n>>a>>b;
- 
-   if(n%b==1){
-       cout<<"Yes"<<endl;
-   }else if(a==1){
-       cout<<"No"<< endl;
+ll a, b,c,d,e,f,m,n,p,q;
+string s,r;
 
-   }else{
-       ll c=1;
-       bool flg= 0;
-       while(c<=n){
-           if(c%b==n%b){
-               flg=1;
-               break;
-           }
-           c*=a;
-
-
-       }
-       if(flg)cout<<"Yes"<<endl;
-       else cout<<"No"<<endl;
-
-   }
-}
+tc(t)
+{
      
+     cin>>n;
+     cin>>s;
+     c=0;
+    int c1=0;
+     for (int i = 0; i < n; i++)
+     {
+         if(s[i]=='1')c++;
+         if(i+1<n&& s[i]=='1'&& s[i+1]=='1')c1++;
+     }
+     if(c1)cout<<2<<endl;
+     else if(c)cout<<1<<endl;
+     else{
+         cout<<0<<endl;
+     }
+     
+}
 return 0;
 }

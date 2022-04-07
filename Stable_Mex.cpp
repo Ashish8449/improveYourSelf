@@ -63,6 +63,22 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
+ll mex(vl &v)
+{
+    ll c = 0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (c == v[i])
+        {
+            c++;
+        }
+        else if (c < v[i])
+        {
+            break;
+        }
+    }
+    return c;
+}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -76,42 +92,51 @@ int main()
 
     tc(t)
     {
-        cin >> s;
-        r = "";
-        n = s.length();
-        for (int i = 0; i < s.length(); i++)
-        {
-            if (i + 1 < n)
-            {
-                if (s[i] == s[i + 1])
-                {
-                    r += s[i];
-                    i++;
-                    r += s[i];
-                }
-                else
-                {
-                    a = i;
-                    for (i = i + 2; i < s.length(); i++)
-                    {
-                        if (s[a] == s[i])
-                        {
-                            r += s[a];
-                            r += s[a];
-                            break;
-                        }
-                        if (s[a + 1] == s[i])
-                        {
-                            r += s[a + 1];
-                            r += s[a + 1];
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        cin >> n;
+        vl v(n);
+        input_array(v);
+        sort(all(v));
 
-        cout << s.length() - r.length() << endl;
+        ll x = mex(v);
+        ll sum= accumulate(all(v),0);
+        if (x == 0)
+        {
+            cout << v[0] - 1 << endl;
+        }
+        else if (sum==0)
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            set<int> st;
+            for (int i = 0; i < n; i++)
+            {
+                st.insert(v[i]);
+            }
+            vl vec;
+            for (auto &&i : st)
+            {
+                vec.pb(i);
+            }
+            ll ans = 0;
+            //    print_array(vec);
+               ll start= lower_bound(all(vec), x)- vec.begin();
+            for (int i = start; i < vec.size(); i++)
+            {
+                //   dbg(i);
+                ll indx = lower_bound(all(vec), v[i] - x + 1) - vec.begin();
+                //    cout<<indx<<endl;
+                // dbg(v[indx]);
+                if (indx<n&& v[indx] == v[i] - x + 1 && i - indx == x - 1)
+                {
+                    ans++;
+                    // dbg(i);
+                }
+                //    dbg(indx);
+            }
+            cout << ans << endl;
+        }
     }
     return 0;
 }

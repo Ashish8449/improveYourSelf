@@ -76,42 +76,44 @@ int main()
 
     tc(t)
     {
-        cin >> s;
-        r = "";
-        n = s.length();
+        cin >> a >> b;
+        cin >> s >> r;
+        int j = 0;
+        bool flg = 0;
         for (int i = 0; i < s.length(); i++)
         {
-            if (i + 1 < n)
+
+            if (r[j] == s[i])
             {
-                if (s[i] == s[i + 1])
-                {
-                    r += s[i];
-                    i++;
-                    r += s[i];
-                }
-                else
-                {
-                    a = i;
-                    for (i = i + 2; i < s.length(); i++)
-                    {
-                        if (s[a] == s[i])
-                        {
-                            r += s[a];
-                            r += s[a];
-                            break;
-                        }
-                        if (s[a + 1] == s[i])
-                        {
-                            r += s[a + 1];
-                            r += s[a + 1];
-                            break;
-                        }
-                    }
-                }
+                j++;
+            }
+
+            if (j == r.length())
+            {
+                flg = 1;
+                break;
+            }
+            if (s[i] == '?')
+            {
+                ll add =  r[j]-'a';
+                add = (add + 1) % 5;
+                // dbg(add);
+                  s[i] = 'a' + add;
+                //   dbg(s[i]);
             }
         }
+        if (flg)
+            cout << -1 << endl;
+        else
+        {
 
-        cout << s.length() - r.length() << endl;
+            // for (int i = 0; i < s.length(); i++)
+            // {
+            //     if (s[i] == '?')
+                  
+            // }
+            cout << s << endl;
+        }
     }
     return 0;
 }
