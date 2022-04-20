@@ -63,26 +63,6 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
-ll power(ll n, ll p)
-{
-    ll res = 1;
-    while (p)
-    {
-        if (p % 2)
-        {
-            res *= n;
-            p--;
-            res %= mod;
-        }
-        else
-        {
-            n *= n;
-            p /= 2;
-            n %= mod;
-        }
-    }
-    return res;
-}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -91,35 +71,28 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
     fast;
-    ll a, b, c, d, e, f, n, p, q;
+    ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     tc(t)
     {
-        ll x;
-        cin >> x >> c;
-
-        map<ll, ll> map;
-        ll ans = 1;
-        for (int i = 2; i * i <= x; i++)
+        cin >> n >> a;
+        vl v(n);
+        ll ans = n;
+        map<int, int> map;
+        for (int i = 0; i < n; i++)
         {
-            while (x % i == 0LL)
-            {
-                map[i]++;
-                x /= i;
-            }
+            cin >> v[i];
+          
+            ll tem = a / v[i];
+            if (a % v[i])
+                tem++;
+           ans= max(ans, tem);
         }
-        map[x]++;
-        for (auto &&m : map)
-        {
-            ll times = m.second % c;
-            times = min(times, c - times);
-            // cout<<m.first<<" "<<m.second<<endl;
-
-            ans *= power(m.first, times);
-        }
-
-        cout << ans << endl;
+    
+            cout << ans << endl;
+  
+         
     }
     return 0;
 }

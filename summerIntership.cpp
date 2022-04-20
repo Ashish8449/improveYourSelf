@@ -63,63 +63,67 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
-ll power(ll n, ll p)
-{
-    ll res = 1;
-    while (p)
-    {
-        if (p % 2)
-        {
-            res *= n;
-            p--;
-            res %= mod;
-        }
-        else
-        {
-            n *= n;
-            p /= 2;
-            n %= mod;
-        }
-    }
-    return res;
-}
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("error.txt", "w", stderr);
+        freopen("output.txt", "w", stdout);
+    #endif
     fast;
-    ll a, b, c, d, e, f, n, p, q;
+    ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
-    tc(t)
-    {
-        ll x;
-        cin >> x >> c;
+    // tc(t)
 
-        map<ll, ll> map;
-        ll ans = 1;
-        for (int i = 2; i * i <= x; i++)
+    getline(cin, s);
+ 
+        map<string, int> map;
+        map["one"] = 1;
+        map["two"] = 2;
+        map["three"] = 3;
+        map["four"] = 4;
+        map["five"] = 5;
+        map["six"] = 6;
+        map["seven"] = 7;
+        map["eight"] = 8;
+        map["nine"] = 9;
+        map["zero"] = 0;
+        string ans = "";
+        string space_delimiter = " ";
+    vector<string> words{};
+    size_t pos = 0;
+    while ((pos = s.find(space_delimiter)) != string::npos) {
+        words.push_back(s.substr(0, pos));
+        s.erase(0, pos + space_delimiter.length());
+    }
+ words.pb(s);
+    // print_array(words);
+
+        for (int i = 0; i < words.size(); i++)
         {
-            while (x % i == 0LL)
+            s=words[i];
+            if (s == "double")
             {
-                map[i]++;
-                x /= i;
+               i++;
+               s= words[i];
+                ans += '0' + map[s];
+                ans += '0' + map[s];
+            }
+            else if (s == "triple")
+            {
+              i++;
+               s= words[i];
+                ans += '0' + map[s];
+                ans += '0' + map[s];
+                ans += '0' + map[s];
+            }
+            else
+            {
+                ans += '0' + map[s];
             }
         }
-        map[x]++;
-        for (auto &&m : map)
-        {
-            ll times = m.second % c;
-            times = min(times, c - times);
-            // cout<<m.first<<" "<<m.second<<endl;
-
-            ans *= power(m.first, times);
-        }
-
         cout << ans << endl;
-    }
+
     return 0;
 }
