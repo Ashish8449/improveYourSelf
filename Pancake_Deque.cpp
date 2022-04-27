@@ -70,29 +70,16 @@ string s,r;
 
 tc(t)
 {
-    cin>>n;
-    vl v(n);
-    vl firstType, secondeType;
-    ll lastfirstType;
-    for (int i = 0; i < n; i++)
-    {
-        cin>>v[i];
-        if(v[i]%2==v[0]%2){
-            firstType.push_back(v[i]);
-            lastfirstType=n-1-i;
-        }
-    }
-    // print_array(firstType);
-    ll ans = (firstType.size()+ 1)/2;
-    if(lastfirstType>0){
-        
-        ans += (lastfirstType);
-    }
-    cout<<ans<<endl;
-
-    set<int>dd;
-    
      
+     cin>>n;
+      vl v(n);
+      input_array(v);
+      ll i =0, j=n-1;
+      ll previous= INT64_MAX;
+      while(i<=j){
+          if(previous<v[i])
+
+      }
 }
 return 0;
 }
