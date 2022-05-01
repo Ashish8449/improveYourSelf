@@ -60,36 +60,9 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
-ll ans = 0;
+
+vvl adj;
 vl vis;
-string s, r;
-
-void dfs(int v, ll &w, ll &b, vvl &adj, ll par)
-{
-
-    if (vis[v])
-        return;
-    vis[v] = true;
-
-    dbg(v);
-    for (int i = 0; i < adj[v].size(); i++)
-    {
-        ll cur = adj[v][i];
-        if(cur!=par){
-        dfs(cur, w, b, adj, v);
-        w += (s[adj[v][i] - 1] == 'W');
-        b += (s[adj[v][i] - 1] == 'B');
-}
-        dbg(w);
-        dbg(b);
-    }
-    if (v == 4)
-    {
-        cout << w << " " << b << endl;
-    }
-    // cout<<v<<" "<< w<<" "<< b<<endl;
-    ans += (w == b && w != 0);
-}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -99,32 +72,24 @@ int main()
 #endif
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
+    string s, r;
 
     tc(t)
     {
-        cin >> n;
-        vl v(n - 1);
-        vis.resize(n + 1, 0);
-        vvl adj(n + 1);
-        input_array(v);
-        cin >> s;
-
-        for (int i = 0; i < v.size(); i++)
-        {
-            adj[i + 2].pb(v[i]);
-            adj[v[i]].pb(i + 2);
-        }
-        for (int i = 1; i < adj.size(); i++)
-        {
-            print_array(adj[i]);
-        }
-
-        ans = 0;
-        a = 0, b = 0;
-        dfs(1, a, b, adj ,-1);
-        cout << ans << endl;
-        adj.clear();
-        vis.clear();
+       vector <pair<int,int>>v(2);
+       for (int i = 0; i < 2; i++)
+       {
+           cin>>v[i].first>>v[i].second;
+       }
+       sort(all(v));
+       
+       if(v[0].second>=v[1].first){
+           cout<<v[1].first<<endl;
+       }else{
+           cout<< v[0].first+ v[1].first<<endl;
+       }
+       
+       
     }
     return 0;
 }
