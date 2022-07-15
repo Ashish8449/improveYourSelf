@@ -1,2 +1,3 @@
-g(up);
-        // dbg(left);
+  // dbg(i);
+                    // dbg(j);
+                    // dbg(tmp);
