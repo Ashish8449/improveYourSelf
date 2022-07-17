@@ -1,3 +1,2 @@
-  // dbg(i);
-                    // dbg(j);
-                    // dbg(tmp);
+print_array(A);
+        // print_array(B);

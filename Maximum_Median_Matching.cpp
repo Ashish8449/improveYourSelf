@@ -22,19 +22,19 @@ typedef long double ld;
 #define vvl vector<vl>
 #define vvs vector<vs>
 #define mem(a, b) memset(a, b, sizeof(a))
-#define fast                         \
-   ios_base::sync_with_stdio(false); \
-   cin.tie(NULL);                    \
-   cout.tie(NULL)
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 #define pb emplace_back
 #define mp make_pair
 #define fi first
 #define se second
 #define endl "\n"
-#define tc(t)   \
-   long long t; \
-   cin >> t;    \
-   while (t--)
+#define tc(t)    \
+    long long t; \
+    cin >> t;    \
+    while (t--)
 #define all(x) (x).begin(), (x).end()
 
 #define dbg(x) cout << #x << " = " << x << endl
@@ -45,20 +45,20 @@ using namespace std;
 template <typename T>
 void print_array(const T &arr, char c = ' ')
 {
-   for (auto x : arr)
-   {
-      cout << x << c;
-   }
-   cout << endl;
+    for (auto x : arr)
+    {
+        cout << x << c;
+    }
+    cout << endl;
 }
 
 template <typename T>
 void input_array(vector<T> &arr)
 {
-   for (ll i = 0; i < arr.size(); i++)
-   {
-      cin >> arr[i];
-   }
+    for (ll i = 0; i < arr.size(); i++)
+    {
+        cin >> arr[i];
+    }
 }
 
 vvl adj;
@@ -66,30 +66,39 @@ vl vis;
 int main()
 {
 #ifndef ONLINE_JUDGE
-   freopen("input.txt", "r", stdin);
-   freopen("error.txt", "w", stderr);
-   freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("error.txt", "w", stderr);
+    freopen("output.txt", "w", stdout);
 #endif
-   fast;
-   ll a, b, c, d, e, f, m, n, p, q;
-   string s;
+    fast;
+    ll a, b, c, d, e, f, m, n, p, q;
+    string s, r;
 
-   tc(t)
-   {
-      cin >> n >> c >> q;
-      cin >> s;
-      for (int i = 0; i < c; i++)
-      {
-         ll l, r;
-         cin >> l >> r;
+    tc(t)
+    {
+        cin >> n;
+        vl A(n), B(n);
+        input_array(A);
+        input_array(B);
+        sort(all(A));
+        sort(all(B));
+        reverse(all(B));
+        // print_array(A);
+        // print_array(B);
+        vl ans;
+        for (int i = 0; i < (n) / 2; i++)
+        {
+            ans.pb(A[i] + B[(n + 1) / 2 + i]);
+        }
+        for (int i = 0; i <= n / 2; i++)
+        {
+            ans.pb(A[(n/2)+i] + B[ i]);
+        }
+        sort(all(ans));
 
-         s += s.substr(l - 1, r - l + 1);
-      }
-      for (int i = 0; i < q; i++)
-      {
-         cin >> a;
-         cout << s[a - 1] << endl;
-      }
-   }
-   return 0;
+        // print_array(ans);
+
+        cout << ans[n/2]<< endl;
+    }
+    return 0;
 }
