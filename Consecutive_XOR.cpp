@@ -85,56 +85,28 @@ int main()
         }
         else
         {
-            vl ones;
+            bool flg =0; 
             for (int i = 0; i < n; i++)
             {
-                if (a[i] == '1')
-                    ones.pb(i);
+                 flg|= a[i]-'0';
             }
-            ll indx = 0;
+            
+            string one_zero="", zero_One="";
+
             for (int i = 0; i < n; i++)
             {
-                if (a[i] == b[i])
-                {
-                    dbg(i);
-                    continue;
-                }
-                else
-                {
-                    if (indx == ones.size())
-                    {
-                        break;
-                    }
-                    for (int j = i; j <= ones[indx]; j++)
-                    {
-                        a[j] = '1';
-                    }
-                    for (int j = 0; j < ones[indx]; j++)
-                    {
-                        if(b[j]=='1'){
-
-                        }else{
-                            if(j<n){
-                                char x= (a[j]-'0')^(a[j+1]-'0');
-                                
-                                a[j]= '0'+x;
-                                a[j+1]='0'+x;
-
-                            }else{
-                                break;
-                            }
-                        }
-                    }
-                }
-                dbg(a);
+                 one_zero += '0'+ (i+1)%2;
+                 zero_One += '0'+ (i)%2;
             }
-            dbg(a);
-            dbg(b);
-            if(a==b){
-                cout<<"YES"<<endl;
-            }else{
-                cout<<"NO"<<endl;
-            }
+            
+           if(one_zero ==b || zero_One ==b)cout<<"NO"<<endl;
+           else if(flg) {
+            cout<<"YES"<<endl;
+           }else{
+            cout<<"NO"<<endl;
+           }
+            
+          
         }
     }
     return 0;
