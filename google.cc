@@ -63,41 +63,90 @@ void input_array(vector<T> &arr)
 
 vvl adj;
 vl vis;
+
+bool isTouch(pair<int, int> p, int rh, int rs)
+{
+    double le = sqrt(p.first * p.first + p.second * p.second);
+    return (le - rs) <= rh;
+}
+
+bool isClose(pair<int, int> p1, pair<int, int> p2, int rs)
+{
+    ll disx = (p1.first - p2.first), disy = (p1.second - p2.second);
+
+    double dis = sqrt(disx * disx + disy * disy);
+
+    return dis < 2 * rs;
+}
+
+void howmanyremoved(vector<pair<int, int>> &v, pair<int, int> p, int rs)
+{
+    vector<pair<int, int>> vleft;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (isClose(v[i], p, rs))
+        {
+        }
+        else
+        {
+            vleft.push_back(v[i]);
+        }
+    }
+
+        v.erase(v.begin(), v.end());
+        for (int i = 0; i < vleft.size(); i++)
+        {
+            v.push_back(vleft[i]);
+        }
+
+    
+}
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
-    fast;
+  
+
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     // tc(t)
     {
-        cin >> n;
-        ll dif = 0;
-        vl va(n), vb(n);
-        for (int i = 0; i < n; i++)
+        int testcase = 0;
+        cin >> testcase;
+        for (int t = 1; t <= testcase; t++)
         {
-            cin >> va[i] >> vb[i];
-        }
-        string ans = "";
-        for (int i = 0; i < n; i++)
-        {
-            if (va[i] + dif <= 500)
+            ll rh, rs;
+            cin >> rs >> rh;
+            cin >> n;
+            vector<pair<int, int>> vr, vy, vrt;
+            int ans1 = 0, ans2 = 0;
+            for (int i = 0; i < n; i++)
             {
-                dif += va[i];
-                ans += "A";
+                cin >> a >> b;
+                vr.push_back(mp(a, b));
+
+                if (isTouch(mp(a, b), rh, rs))
+                {
+                    vrt.push_back(mp(a, b));
+                    ans1++;
+                }
             }
-            else
+            cin >> m;
+            for (int i = 0; i < m; i++)
             {
-                dif -= vb[i];
-                ans += "G";
+                cin >> a >> b;
+                vy.push_back(mp(a, b));
+
+                if (isTouch(mp(a, b), rh, rs))
+                {
+                    howmanyremoved(vrt, mp(a, b), rs);
+                    
+                        ans2++;
+                    
+                }
             }
+
+            cout << "Case #" << t << ": " << vrt.size() << " " << ans2 << endl;
         }
-        cout << ans << endl;
     }
     return 0;
 }

@@ -60,6 +60,51 @@ void input_array(vector<T> &arr)
         cin >> arr[i];
     }
 }
+int count = 0;
+int tilingCount(int n)
+{
+    // cout << n << endl;
+    if (n < 4)
+        return 1;
+
+    return tilingCount(n - 4) + tilingCount(n - 1);
+}
+
+  int reverseNumber(int n)
+{
+    int reversed_number = 0, remainder;
+
+    while (n != 0)
+    {
+        remainder = n % 10;
+        reversed_number = reversed_number * 10 + remainder;
+        n /= 10;
+    }
+    return reversed_number;
+}
+
+bool sumOfNumberAndReverse(int num)
+{
+
+
+    for (int i = 0; i < 1e5 + 1; i++)
+    {
+        if (num < i)
+        {
+            break;
+        }
+
+        int val = num - i;
+
+        int mx = max(i, val);
+        int mm = min(i, val);
+
+        if(mm == reverseNumber(mx))return true;
+
+      
+    }
+    return false;
+}
 
 vvl adj;
 vl vis;
@@ -77,27 +122,9 @@ int main()
     // tc(t)
     {
         cin >> n;
-        ll dif = 0;
-        vl va(n), vb(n);
-        for (int i = 0; i < n; i++)
-        {
-            cin >> va[i] >> vb[i];
-        }
-        string ans = "";
-        for (int i = 0; i < n; i++)
-        {
-            if (va[i] + dif <= 500)
-            {
-                dif += va[i];
-                ans += "A";
-            }
-            else
-            {
-                dif -= vb[i];
-                ans += "G";
-            }
-        }
-        cout << ans << endl;
+
+        cout << sumOfNumberAndReverse(n)<<" dfdf" << endl;
+        // cout << tilingCount(n) << endl;
     }
     return 0;
 }

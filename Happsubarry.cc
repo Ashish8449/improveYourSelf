@@ -65,39 +65,41 @@ vvl adj;
 vl vis;
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
+
     fast;
     ll a, b, c, d, e, f, m, n, p, q;
     string s, r;
 
     // tc(t)
     {
-        cin >> n;
-        ll dif = 0;
-        vl va(n), vb(n);
-        for (int i = 0; i < n; i++)
+        int testcase = 0;
+        cin >> testcase;
+        for (int t = 1; t <= testcase; t++)
         {
-            cin >> va[i] >> vb[i];
-        }
-        string ans = "";
-        for (int i = 0; i < n; i++)
-        {
-            if (va[i] + dif <= 500)
+            cin >> n;
+            vl v(n);
+            input_array(v);
+            ll ans = 0;
+
+            for (int i = 0; i < n; i++)
             {
-                dif += va[i];
-                ans += "A";
+                ll sum = 0;
+                for (int j = i; j < n; j++)
+                {
+                    // dbg(sum);
+                    sum += v[j];
+                    if (sum >= 0)
+                    {
+                        ans += sum;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
             }
-            else
-            {
-                dif -= vb[i];
-                ans += "G";
-            }
+            cout << "Case #" << t << ": " << ans << endl;
         }
-        cout << ans << endl;
     }
     return 0;
 }
